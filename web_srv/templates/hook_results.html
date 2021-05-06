@@ -1,0 +1,29 @@
+<a href="/">powrót</a>
+
+<h3>zadanie</h3>
+testowana funkcja: {{ args.case.expression_string }}
+<br>startując w punkcie: {{ args.case.start_point }}
+<br>badając metodą Hooke'a Jeevesa
+<br>z warunkiem stopu: {{ args.case.stop_condition_name }}: {{ args.case.stop_value }}
+<br>
+<h3>wyniki:</h3>
+
+
+{% if args.results.success %}
+    <br>Po wykonaniu <b>{{ args.results.counter }}</b> iteracji otrzymano wynikowy punkt:
+
+    <br><b>( {{ args.results.x_result[0] }} , {{ args.results.x_result[1] }} )</b>
+    <br>wartość funkcji: {{ args.results.F_result }}
+    <br>
+
+    {% for plot in args.plots %}
+    {{ plot|safe }}
+    {% endfor %}
+
+
+{% else %}
+    no success
+    <br>{{ args.results.message }}
+
+{% endif %}
+

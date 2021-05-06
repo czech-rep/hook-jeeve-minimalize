@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="shortcut icon" type="image/x-icon" href="/static/media/favicon.ico">
+  <link rel="stylesheet" href="/static/styles1.css">
+  
+  <title>Hookea</title>
+
+</head>
+<body>
+
+<h1>Witam na stronie kalkulatora</h1>
+
+<h4>w narzędziu zaimplementowano metodę Hooke'a-Jeevesa do znajdowania minimum funkcji wielu zmniennych</h4>
+
+oblicz przykładowy: 
+{% for example in examples %} 
+<p style="text-indent:20px;"><a href="/example/{{ example.no }}">{{ example.expr }} </a>
+</p>
+{% endfor %}
+<br>
+
+<form method="POST">
+    <label for="fcn">podaj użyte zmienne rozdzielone przecinkami: </label>
+    <input type="text" name="vars" id="vars" size="20">
+    <br><label for="fcn">podaj funkcję dwóch lub więcej zmiennych: f(x)= </label>
+    <input type="text" name="expr" id="fcn" size="40">
+    
+    <br><label for="fcn">podaj punkt startowy - współrzędne rozdzielone przecinkami (seperator dziesiętny - kropka): </label>
+    <input type="text" name="x0" id="start" step="0.0000005">  
+
+    <br>wybierz warunek stopu:
+    <input type="radio" value="iter" name="stop" id="i2"> <label for="i2">liczba iteracji</label>
+    <input type="radio" value="step" name="stop" id="d2"> <label for="d2">dokładność</label>
+
+    <br><label for="val">podaj wartość graniczną: </label>
+    <input type="number" name="stopval" id="val" step=".000001"> 
+
+    <br><br><input type="submit" value="calculate">
+</form>
+
+
+</body>
+</html>
